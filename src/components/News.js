@@ -458,7 +458,8 @@ export class News extends Component {
      constructor(){
         super();
         this.state={
-            articles: this.articles
+            articles: this.articles,
+            page: 1
         }
     }
 //    async componentDidMount(){
@@ -466,6 +467,15 @@ export class News extends Component {
 //     let data = await fetch(url);
 //     let parsedData = await data.json();
 //    }
+handlePrevClick =() =>{
+// console.log("left click");
+}
+handleNextClick=() =>{
+// console.log("Right click");
+
+}
+
+
     render() {
         console.log("second");
         return (
@@ -479,7 +489,10 @@ export class News extends Component {
                             <Newsitems title={element.title?element.title.slice(0,50):""} description={element.description?element.description.slice(0,50):""} imgUrl={element.image_url} source_url={element.source_url}/>
                         </div>
                         })}
-                        
+                    <div className="d-flex justify-content-between">
+                        <button type="button" disabled={this.state.page<=1} onClick={this.handlePrevClick} className="btn btn-dark ">&larr;Prev</button>
+                        <button type="button" disabled={this.state.page<=1} onClick={this.handleNextClick} className="btn btn-dark">next&rarr;</button>
+                    </div>    
                     </div>
                 </div>
             </div>
