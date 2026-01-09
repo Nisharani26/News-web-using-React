@@ -461,8 +461,13 @@ export class News extends Component {
             articles: this.articles
         }
     }
-   
+//    async componentDidMount(){
+//     let url="";
+//     let data = await fetch(url);
+//     let parsedData = await data.json();
+//    }
     render() {
+        console.log("second");
         return (
             <div>
                 <div className='container  my-3'>
@@ -471,7 +476,7 @@ export class News extends Component {
                         {this.state.articles.map((element)=>
                         {
                             return <div className='col-md-4' key={element.source_url}>
-                            <Newsitems title={element.title.slice(0,50)} description={element.description.slice(0,50)} imgUrl={element.image_url} source_url={element.source_url}/>
+                            <Newsitems title={element.title?element.title.slice(0,50):""} description={element.description?element.description.slice(0,50):""} imgUrl={element.image_url} source_url={element.source_url}/>
                         </div>
                         })}
                         
